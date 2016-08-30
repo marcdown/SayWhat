@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,6 +19,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9Hs-Cn-ac6">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="V3R-gf-GmM"/>
+                                </connections>
+                            </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYo-ll-i5x">
+                                <items>
+                                    <navigationItem title="Say What" id="ova-fH-I6o">
+                                        <barButtonItem key="rightBarButtonItem" image="microphone" id="cEo-4r-QwX">
+                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="microphoneButtonTapped" destination="BYZ-38-t0r" id="Jbr-oP-FDZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9I5-SL-hJm">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -25,11 +46,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3LP-ug-G9s" id="Fpp-xG-6pH">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="14e-4R-vLQ">
-                                                    <frame key="frameInset" minX="15" width="345" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -44,25 +65,23 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="mrw-Gt-t59"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9Hs-Cn-ac6">
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="V3R-gf-GmM"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9Hs-Cn-ac6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5Pj-8F-uJ1"/>
                             <constraint firstAttribute="trailing" secondItem="9I5-SL-hJm" secondAttribute="trailing" id="AsE-3T-2NT"/>
                             <constraint firstAttribute="trailing" secondItem="9Hs-Cn-ac6" secondAttribute="trailing" id="CRd-bi-QKD"/>
+                            <constraint firstItem="xYo-ll-i5x" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Kgu-qA-exE"/>
+                            <constraint firstItem="9I5-SL-hJm" firstAttribute="top" secondItem="9Hs-Cn-ac6" secondAttribute="bottom" id="NPB-Yc-112"/>
                             <constraint firstItem="9I5-SL-hJm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OCa-N8-CFB"/>
                             <constraint firstItem="9Hs-Cn-ac6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dj0-hP-QZi"/>
-                            <constraint firstItem="9I5-SL-hJm" firstAttribute="top" secondItem="9Hs-Cn-ac6" secondAttribute="bottom" id="sWa-K7-3FB"/>
+                            <constraint firstItem="9Hs-Cn-ac6" firstAttribute="top" secondItem="xYo-ll-i5x" secondAttribute="bottom" id="t2P-wc-Oao"/>
+                            <constraint firstItem="xYo-ll-i5x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uRU-Nq-0kn"/>
+                            <constraint firstAttribute="trailing" secondItem="xYo-ll-i5x" secondAttribute="trailing" id="urS-xF-l2L"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9I5-SL-hJm" secondAttribute="bottom" id="vzv-mK-ile"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="microphoneButton" destination="cEo-4r-QwX" id="6Ru-qc-zJ6"/>
                         <outlet property="searchBar" destination="9Hs-Cn-ac6" id="WSt-ZM-tCb"/>
                         <outlet property="tableView" destination="9I5-SL-hJm" id="ntk-5u-1Zx"/>
                     </connections>
@@ -71,5 +90,75 @@
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
         </scene>
+        <!--Speech Recognition View Controller-->
+        <scene sceneID="94u-bg-m95">
+            <objects>
+                <viewController storyboardIdentifier="SpeechRecognitionViewController" id="ZJi-LQ-NCY" customClass="SpeechRecognitionViewController" customModule="SayWhat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="08w-VT-sdK"/>
+                        <viewControllerLayoutGuide type="bottom" id="gpH-Db-a3k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mAw-lb-m7n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sr-BD-XxE">
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="80"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPQ-nz-XFp">
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="UHk-xl-FYu"/>
+                                    <constraint firstAttribute="height" constant="44" id="lTG-T6-XdR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonTapped" destination="ZJi-LQ-NCY" eventType="touchUpInside" id="LmL-lU-dHU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSG-JW-AEO">
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.25882352939999997" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JoL-jB-Kfs"/>
+                                    <constraint firstAttribute="width" constant="150" id="aAU-em-Tui"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped" destination="ZJi-LQ-NCY" eventType="touchUpInside" id="tpm-gv-aOa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gpH-Db-a3k" firstAttribute="top" secondItem="1sr-BD-XxE" secondAttribute="bottom" id="0J4-gQ-KVA"/>
+                            <constraint firstItem="jPQ-nz-XFp" firstAttribute="leading" secondItem="mAw-lb-m7n" secondAttribute="leadingMargin" id="IJz-uC-Jl9"/>
+                            <constraint firstItem="gpH-Db-a3k" firstAttribute="top" secondItem="jPQ-nz-XFp" secondAttribute="bottom" constant="88" id="aSf-sA-Iw3"/>
+                            <constraint firstAttribute="trailing" secondItem="1sr-BD-XxE" secondAttribute="trailing" id="b8Q-uD-FRX"/>
+                            <constraint firstItem="wSG-JW-AEO" firstAttribute="trailing" secondItem="mAw-lb-m7n" secondAttribute="trailingMargin" id="eXB-QZ-07C"/>
+                            <constraint firstItem="1sr-BD-XxE" firstAttribute="leading" secondItem="mAw-lb-m7n" secondAttribute="leading" id="hUf-0k-Vgc"/>
+                            <constraint firstItem="1sr-BD-XxE" firstAttribute="top" secondItem="mAw-lb-m7n" secondAttribute="top" constant="20" id="sDC-vG-mzD"/>
+                            <constraint firstItem="gpH-Db-a3k" firstAttribute="top" secondItem="wSG-JW-AEO" secondAttribute="bottom" constant="88" id="x98-8X-1Ni"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="1sr-BD-XxE" id="Qtb-qQ-MSO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbQ-8K-0tw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="35.532233883058474"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="microphone" width="22" height="22"/>
+    </resources>
 </document>
