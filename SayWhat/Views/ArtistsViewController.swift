@@ -52,7 +52,9 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SpeechRecognitionViewController") as! SpeechRecognitionViewController
         vc.delegate = self
-        present(vc, animated: true, completion: nil)
+        OperationQueue.main.addOperation {
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     func displayErrorAlert(message: ErrorMessage) {
