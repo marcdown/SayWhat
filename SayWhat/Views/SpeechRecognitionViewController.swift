@@ -32,7 +32,7 @@ class SpeechRecognitionViewController: UIViewController, SFSpeechRecognizerDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        textView.text = "Say It :)"
+        textView.text = "Listening..."
     }
 
     override func viewDidAppear(_ animated: Bool) {
