@@ -32,22 +32,11 @@ class SpeechRecognitionViewController: UIViewController, SFSpeechRecognizerDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        textView.text = "Listening..."
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
         speechRecognizer?.delegate = self
         startListening()
     }
-    
+
     func startListening() {
-        if recognitionTask != nil {
-            recognitionTask?.cancel()
-            recognitionTask = nil
-        }
-        
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let recognitionRequest = recognitionRequest else {
             return
@@ -86,6 +75,7 @@ class SpeechRecognitionViewController: UIViewController, SFSpeechRecognizerDeleg
         
         do {
             try audioEngine.start()
+            textView.text = "Listening..."
         } catch {
             print("Audio engine failed to start")
         }
@@ -115,9 +105,11 @@ class SpeechRecognitionViewController: UIViewController, SFSpeechRecognizerDeleg
             let alertController = UIAlertController(title: nil,
                                                     message: "Speech Recognition is currently unavailable.",
                                                     preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let alertAction = UIAlertAction(title: "OK", style: .default) { (alertAction) in
+                self.cancelButtonTapped()
+            }
             alertController.addAction(alertAction)
-            self.present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true)
         }
     }
 }
