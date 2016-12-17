@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//model
 class ArtistModel: NSObject {
     var identifier: String?
     var imageURL: String?
