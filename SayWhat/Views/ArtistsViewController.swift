@@ -123,23 +123,32 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
         }
         let urlEncodedArtist = artist.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let url: URL = URL(string: "https://api.spotify.com/v1/search?q=\(urlEncodedArtist)&type=artist")!
-        makeAPICall(url: url)
+        makeAPICall(url: url){ artistsArray in
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+            self.searchResults = artistsArray
+        }
     }
     
-    func makeAPICall(url: URL) {
+    func makeAPICall(url: URL, completion: @escaping (_ artists: [ArtistModel])->Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: url) { (data, response, error) in
             guard data != nil else {
                 print("\(error?.localizedDescription)")
                 return
-            }            
-        self.serializeAndParseJSON(data: data!)
+            }
+            self.serializeAndParseJSON(data: data!) { artistsArray in
+                completion(artistsArray)
+                
+                            }
         }
         task.resume()
     }
     
     
-    func serializeAndParseJSON(data: Data){
+    func serializeAndParseJSON(data:Data, completion: (_ artists: [ArtistModel])->Void ){
+        var artistsArray: [ArtistModel] = []
         do {
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject]
             if let artists = json?["artists"]?["items"] as? [AnyObject] {
@@ -148,13 +157,10 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
                 } else {
                     for artist in artists {
                         let artistModel = ArtistModel(artist: artist as! [String : AnyObject])
-                        self.searchResults.append(artistModel)
+                        
+                        artistsArray.append(artistModel)
                     }
-                    
-                    
-                    OperationQueue.main.addOperation {
-                        self.tableView.reloadData()
-                    }
+                    completion(artistsArray)
                 }
                 
             }
