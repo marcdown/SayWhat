@@ -14,6 +14,7 @@
 		49176AEF1D75242A0032868D /* SpeechRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49176AEE1D75242A0032868D /* SpeechRecognitionViewController.swift */; };
 		494361061D73CA8700780198 /* ArtistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494361051D73CA8700780198 /* ArtistModel.swift */; };
 		494361081D73CA8F00780198 /* ArtistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494361071D73CA8F00780198 /* ArtistsViewController.swift */; };
+		E322F1321E05C9A0001CD910 /* SpotifyAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322F1311E05C9A0001CD910 /* SpotifyAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		49176AEE1D75242A0032868D /* SpeechRecognitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeechRecognitionViewController.swift; path = Views/SpeechRecognitionViewController.swift; sourceTree = "<group>"; };
 		494361051D73CA8700780198 /* ArtistModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArtistModel.swift; path = Models/ArtistModel.swift; sourceTree = "<group>"; };
 		494361071D73CA8F00780198 /* ArtistsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArtistsViewController.swift; path = Views/ArtistsViewController.swift; sourceTree = "<group>"; };
+		E322F1311E05C9A0001CD910 /* SpotifyAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				494361051D73CA8700780198 /* ArtistModel.swift */,
+				E322F1311E05C9A0001CD910 /* SpotifyAPIManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -118,7 +121,7 @@
 				TargetAttributes = {
 					490179C41D73BDA2001A3E76 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = P2U96TQV3D;
+						DevelopmentTeam = MG3SWKAT37;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -162,6 +165,7 @@
 				49176AEF1D75242A0032868D /* SpeechRecognitionViewController.swift in Sources */,
 				494361081D73CA8F00780198 /* ArtistsViewController.swift in Sources */,
 				494361061D73CA8700780198 /* ArtistModel.swift in Sources */,
+				E322F1321E05C9A0001CD910 /* SpotifyAPIManager.swift in Sources */,
 				490179C91D73BDA2001A3E76 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,10 +289,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P2U96TQV3D;
+				DEVELOPMENT_TEAM = MG3SWKAT37;
 				INFOPLIST_FILE = SayWhat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.creativemess.SayWhat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bereketg.SayWhat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -299,10 +303,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = P2U96TQV3D;
+				DEVELOPMENT_TEAM = MG3SWKAT37;
 				INFOPLIST_FILE = SayWhat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.creativemess.SayWhat;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bereketg.SayWhat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
