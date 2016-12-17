@@ -128,9 +128,11 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
                 self.tableView.reloadData()
             }
             if artistsArray.isEmpty{
-                self.displayErrorAlert(message: .NoResults)
+              self.displayErrorAlert(message: .NoResults)
+
             }
             self.searchResults = artistsArray
+            
         }
     }
     
