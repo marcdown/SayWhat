@@ -127,6 +127,9 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
             }
+            if artistsArray.isEmpty{
+                self.displayErrorAlert(message: .NoResults)
+            }
             self.searchResults = artistsArray
         }
     }
@@ -153,7 +156,7 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject]
             if let artists = json?["artists"]?["items"] as? [AnyObject] {
                 if artists.isEmpty {
-                    self.displayErrorAlert(message: .NoResults)
+                    completion(artistsArray)
                 } else {
                     for artist in artists {
                         let artistModel = ArtistModel(artist: artist as! [String : AnyObject])
