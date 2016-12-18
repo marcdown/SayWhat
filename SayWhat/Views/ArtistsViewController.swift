@@ -88,17 +88,8 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     func makeAPICall(url: URL, completion: @escaping (_ artists: [ArtistModel])->Void) {
-        let session = URLSession.shared
-        let task = session.dataTask(with: url) { (data, response, error) in
-            guard data != nil else {
-                print("\(error?.localizedDescription)")
-                return
-            }
-            self.serializeAndParseJSON(data: data!) { artistsArray in
-                completion(artistsArray)
-                            }
-        }
-        task.resume()
+        let manager = SpotifyAPIManager()
+        manager.searchForArtists(url: url, completion: completion)
     }
     
     
