@@ -68,47 +68,30 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
         }
     }
     
-    func search(artist: String?) {
+    func searchForArtist(artist: String?){
         guard let artist = artist else {
             return
         }
-        
-        reset()
-        
         let urlEncodedArtist = artist.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let url: URL = URL(string: "https://api.spotify.com/v1/search?q=\(urlEncodedArtist)&type=artist")!
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: url) { (data, response, error) in
-            guard let data = data else {
-                return
+        makeAPICall(url: url){ artistsArray in
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
             }
+            if artistsArray.isEmpty{
+              self.displayErrorAlert(message: .NoResults)
+
+            }
+            self.searchResults = artistsArray
             
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject]
-                
-                if let artists = json?["artists"]?["items"] as? [AnyObject] {
-                    if artists.isEmpty {
-                        self.displayErrorAlert(message: .NoResults)
-                    } else {
-                        for artist in artists {
-                            let artistModel = ArtistModel(artist: artist as! [String : AnyObject])
-                            self.searchResults.append(artistModel)
-                        }
-                        
-                        OperationQueue.main.addOperation {
-                            self.tableView.reloadData()
-                        }
-                    }
-                    
-                }
-            } catch {
-                return
-            }
         }
-        
-        task.resume()
     }
+    
+    func makeAPICall(url: URL, completion: @escaping (_ artists: [ArtistModel])->Void) {
+        let manager = SpotifyAPIManager()
+        manager.searchForArtists(url: url, completion: completion)
+    }
+    
     
     func reset() {
         searchResults = []
@@ -149,7 +132,7 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
-        search(artist: searchBar.text)
+        searchForArtist(artist: searchBar.text)
     }
     
     // MARK: UITableViewDataSource
@@ -171,7 +154,8 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
     
     func speechRecognitionComplete(query: String?) {
         if let query = query {
-            search(artist: query)
+            
+            searchForArtist(artist: query)
             searchBar.text = ""
         }
         

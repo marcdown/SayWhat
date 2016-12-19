@@ -56,7 +56,11 @@ class SpeechRecognitionViewController: UIViewController, SFSpeechRecognizerDeleg
                 self.stopListening()
             }
         })
-        
+        beginAudioSetup()
+    }
+    
+    
+    func beginAudioSetup(){
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryRecord)
@@ -79,6 +83,8 @@ class SpeechRecognitionViewController: UIViewController, SFSpeechRecognizerDeleg
         } catch {
             print("Audio engine failed to start")
         }
+
+        
     }
     
     func stopListening() {
