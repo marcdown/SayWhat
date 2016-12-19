@@ -93,28 +93,6 @@ class ArtistsViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     
-    func serializeAndParseJSON(data:Data, completion: (_ artists: [ArtistModel])->Void ){
-        var artistsArray: [ArtistModel] = []
-        do {
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject]
-            if let artists = json?["artists"]?["items"] as? [AnyObject] {
-                if artists.isEmpty {
-                    completion(artistsArray)
-                } else {
-                    for artist in artists {
-                        let artistModel = ArtistModel(artist: artist as! [String : AnyObject])
-                        
-                        artistsArray.append(artistModel)
-                    }
-                    completion(artistsArray)
-                }
-                
-            }
-        } catch {
-            return
-        }
-    }
-    
     func reset() {
         searchResults = []
         tableView.reloadData()

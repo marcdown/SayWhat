@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+//model was created out of the original search function.
 class SpotifyAPIManager{
     
     func searchForArtists(url: URL, completion: @escaping (_ artists: [ArtistModel])->Void) {
@@ -25,7 +27,7 @@ class SpotifyAPIManager{
         task.resume()
     }
     
-    
+    //receives JSON from the search for artist function and serializes it 
     private func artistsFromJSON(data:Data, completion: (_ artists: [ArtistModel])->Void ){
         var artistsArray: [ArtistModel] = []
         do {

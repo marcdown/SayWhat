@@ -59,6 +59,7 @@ class SpeechRecognitionViewController: UIViewController, SFSpeechRecognizerDeleg
         beginAudioSetup()
     }
     
+    
     func beginAudioSetup(){
         let audioSession = AVAudioSession.sharedInstance()
         do {
